@@ -1,13 +1,20 @@
 'use client'
 
-import {useState} from 'react'
 import {motion} from 'framer-motion'
-import {AlertTriangle, ChevronDown, Cloud, Cpu, Download, Zap} from 'lucide-react'
+import {ChevronDown, Cloud, Code, Cpu, Database, LayoutDashboard, Server, Wifi, Zap} from 'lucide-react'
+import DownloadSection from "../components/fdscluster/download-section.tsx";
+import Footer from "../components/fdscluster/footer.tsx";
 
 const technologies = [
-	{name: 'Kubernetes', logo: '/kubernetes-logo.svg'},
-	{name: 'Java', logo: '/java-logo.svg'},
-	{name: 'MongoDB', logo: '/mongodb-logo.svg'},
+	{name: 'Java', icon: Code, description: 'Robust backend development for high performance Minecraft plugins'},
+	{name: 'MongoDB', icon: Database, description: 'Flexible NoSQL database for efficient data storage'},
+	{name: 'React', icon: LayoutDashboard, description: 'Modern frontend framework for an intuitive dashboard'},
+	{name: 'WebSockets', icon: Wifi, description: 'Real-time communication protocol for instant server updates'},
+	{
+		name: 'Netty',
+		icon: Server,
+		description: 'Asynchronous event-driven network framework for scalable server communication'
+	},
 ]
 
 const testimonials = [
@@ -47,14 +54,11 @@ const faqs = [
 ]
 
 const teamMembers = [
-	{name: 'Alice Johnson', role: 'Founder & CEO', avatar: '/team1.jpg'},
-	{name: 'Bob Smith', role: 'Lead Developer', avatar: '/team2.jpg'},
-	{name: 'Carol Williams', role: 'UX Designer', avatar: '/team3.jpg'},
-	{name: 'David Brown', role: 'System Architect', avatar: '/team4.jpg'},
+	{name: 'Fedox', role: 'Founder', avatar: '/staff/fedox.png'},
+	{name: 'Austria7', role: 'Lead Developer', avatar: '/staff/austria7.png'},
 ]
 
 export default function LandingPage() {
-	const [isMaintenanceMode] = useState(true)
 
 	return (
 		<div className="min-h-screen bg-gradient-to-b from-white to-blue-50">
@@ -140,15 +144,21 @@ export default function LandingPage() {
 					<h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Technologies We Use</h2>
 					<div className="flex justify-center items-center space-x-8">
 						{technologies.map((tech, index) => (
-							<motion.img
+							<motion.div
 								key={tech.name}
-								src={tech.logo}
-								alt={tech.name}
-								className="h-12"
+								className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
 								initial={{opacity: 0, y: 20}}
 								animate={{opacity: 1, y: 0}}
 								transition={{duration: 0.5, delay: index * 0.1}}
-							/>
+							>
+								<div className="flex flex-col items-center text-center">
+									<div className="bg-blue-100 p-3 rounded-full mb-4">
+										<tech.icon className="h-8 w-8 text-blue-600"/>
+									</div>
+									<h3 className="text-xl font-semibold mb-2">{tech.name}</h3>
+									<p className="text-gray-600 text-sm">{tech.description}</p>
+								</div>
+							</motion.div>
 						))}
 					</div>
 				</div>
@@ -182,7 +192,7 @@ export default function LandingPage() {
 			<section id="team" className="bg-white py-16">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Our Team</h2>
-					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2  gap-8">
 						{teamMembers.map((member, index) => (
 							<motion.div
 								key={member.name}
@@ -201,38 +211,7 @@ export default function LandingPage() {
 				</div>
 			</section>
 
-			<section id="download" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-				<h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Download</h2>
-				{isMaintenanceMode ? (
-					<motion.div
-						className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 rounded-lg"
-						initial={{opacity: 0, y: 20}}
-						animate={{opacity: 1, y: 0}}
-						transition={{duration: 0.5}}
-					>
-						<div className="flex items-center">
-							<AlertTriangle className="h-6 w-6 mr-2"/>
-							<p className="font-semibold">Maintenance Mode</p>
-						</div>
-						<p className="mt-2">We're currently performing maintenance on our download servers. Please check
-							back later.</p>
-					</motion.div>
-				) : (
-					<motion.div
-						className="text-center"
-						initial={{opacity: 0, y: 20}}
-						animate={{opacity: 1, y: 0}}
-						transition={{duration: 0.5}}
-					>
-						<a href="#"
-						   className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full inline-flex items-center">
-							<Download className="mr-2 h-5 w-5"/>
-							Download Now
-						</a>
-						<p className="mt-4 text-gray-600">Version 1.0.0 | 50MB</p>
-					</motion.div>
-				)}
-			</section>
+			<DownloadSection/>
 
 			<section id="faq" className="bg-white py-16">
 				<div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -254,21 +233,7 @@ export default function LandingPage() {
 				</div>
 			</section>
 
-			<footer className="bg-gray-800 text-white py-8">
-				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="flex justify-between items-center">
-						<div className="flex items-center">
-							<Cloud className="h-8 w-8 text-blue-400"/>
-							<span className="ml-2 text-xl font-bold">FedustriaCluster</span>
-						</div>
-						<div className="flex space-x-6">
-							<a href="#" className="hover:text-blue-400">Terms</a>
-							<a href="#" className="hover:text-blue-400">Privacy</a>
-							<a href="#" className="hover:text-blue-400">Contact</a>
-						</div>
-					</div>
-				</div>
-			</footer>
+			<Footer/>
 		</div>
 	)
 }
