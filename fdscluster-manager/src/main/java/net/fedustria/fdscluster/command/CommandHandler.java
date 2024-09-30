@@ -2,6 +2,7 @@ package net.fedustria.fdscluster.command;
 
 import net.fedustria.fdscluster.command.impl.HelpCommand;
 import net.fedustria.fdscluster.command.impl.ShutdownCommand;
+import net.fedustria.fdscluster.command.impl.VersionCommand;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -21,6 +22,7 @@ public class CommandHandler {
     public CommandHandler() {
         addCommand(new HelpCommand());
         addCommand(new ShutdownCommand());
+        addCommand(new VersionCommand());
     }
 
     public void addCommand(Command command) {

@@ -78,4 +78,9 @@ public class Manager {
     private static void showPrefix() {
         System.out.print(PREFIX);
     }
+
+    public static void initShutdown() {
+        System.exit(0);
+    }
+
 }

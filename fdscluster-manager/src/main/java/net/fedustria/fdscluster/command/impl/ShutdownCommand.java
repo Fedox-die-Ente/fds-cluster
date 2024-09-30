@@ -1,5 +1,6 @@
 package net.fedustria.fdscluster.command.impl;
 
+import net.fedustria.fdscluster.Manager;
 import net.fedustria.fdscluster.command.Command;
 import net.fedustria.fdscluster.utils.logger.Logger;
 
@@ -9,7 +10,7 @@ import java.util.Set;
 /**
  * © 2024 Florian O and Fabian W.
  * Created on: 9/29/2024 9:19 PM
- * <p>
+ * <p>d
  * https://www.youtube.com/watch?v=tjBCjfB3Hq8
  */
 
@@ -32,7 +33,7 @@ public class ShutdownCommand extends Command {
             System.exit(1);
         }
 
-        System.exit(0);
+        Manager.initShutdown();
 
         return true;
     }
