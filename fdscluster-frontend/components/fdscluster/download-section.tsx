@@ -6,11 +6,11 @@ import {AlertTriangle, Code, Database, Download} from 'lucide-react'
 
 export default function DownloadSection() {
 
-	const [isMaintenanceMode] = useState(false)
+	const [isMaintenanceMode] = useState(true)
 
 	return (
 		<section id="download"
-				 className="relative py-24 bg-gradient-to-br from-blue-900 via-blue-700 to-blue-500 overflow-hidden">
+				 className="relative py-24 bg-gradient-to-br from-primary-dark via-blue-700 to-primary-light overflow-hidden">
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 				<motion.h2
 					className="text-4xl font-bold text-center text-white mb-12"
