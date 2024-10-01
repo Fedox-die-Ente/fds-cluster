@@ -53,8 +53,6 @@ public class Manager {
 
         showPrefix();
 
-        // test
-
         if (!finishedSetup) {
             Logger.info("Welcome to the FDSCluster, please finish the setup in your browser.");
             Logger.info("You can access the setup by visiting: https://cloud.fedustria.net/setup");
