@@ -1,18 +1,19 @@
 package net.fedustria.fdscluster;
 
+import lombok.Getter;
+import net.fedustria.fdscluster.command.CommandHandler;
+import net.fedustria.fdscluster.utils.ConsoleUtils;
+import net.fedustria.fdscluster.utils.logger.Logger;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.Calendar;
+
 import static java.util.Arrays.copyOfRange;
 import static net.fedustria.fdscluster.utils.Colors.ANSI_LIGHT_BLUE;
 import static net.fedustria.fdscluster.utils.Colors.ANSI_RESET;
 import static net.fedustria.fdscluster.utils.Constants.ASCII_ART;
 import static net.fedustria.fdscluster.utils.Constants.PREFIX;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.Calendar;
-import lombok.Getter;
-import net.fedustria.fdscluster.command.CommandHandler;
-import net.fedustria.fdscluster.utils.ConsoleUtils;
-import net.fedustria.fdscluster.utils.logger.Logger;
 
 /**
  * © 2024 Florian O. and Fabian W.
@@ -61,14 +62,14 @@ public class Manager {
 	private static void launch() {
 		commandHandler = new CommandHandler();
 
-		showPrefix();
-
 		if (!finishedSetup) {
 			Logger.info("Welcome to the FDSCluster, please finish the setup in your browser.");
 			Logger.info("You can access the setup by visiting: https://cloud.fedustria.net/setup");
 			Logger.info("Your configuration token is: %s", "1234567890");
-			handleInput();
 		}
+
+		showPrefix();
+		handleInput();
 	}
 
 	private static void handleInput() {
@@ -80,6 +81,7 @@ public class Manager {
 
 				if (!finishedSetup) {
 					Logger.info("Please finish the setup in your browser.");
+					showPrefix();
 					continue;
 				}
 
