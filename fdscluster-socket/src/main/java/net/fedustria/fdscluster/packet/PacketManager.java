@@ -1,9 +1,12 @@
 package net.fedustria.fdscluster.packet;
 
+import net.fedustria.fdscluster.server.ConnectedClient;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import net.fedustria.fdscluster.server.ConnectedClient;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * © 2024 Florian O and Fabian W.
@@ -14,12 +17,24 @@ import net.fedustria.fdscluster.server.ConnectedClient;
 
 public class PacketManager {
 
-	public void processPacket(DataInputStream inputStream, ConnectedClient client)
-		throws IOException, InstantiationException, IllegalAccessException {
-		String packetName = inputStream.readUTF();
+	private final List<PacketListener> listeners = new ArrayList<>();
 
-		IPacket packet = PacketRegistry.getPacket(packetName).newInstance();
-		for (int i = 0; i < packet.packetSize(); i++) {}
+	public void processPackets(DataInputStream inputStream, ConnectedClient client)
+		throws IOException, InstantiationException, IllegalAccessException {
+		while (true) {
+			String packetName = inputStream.readUTF();
+
+			IPacket packet = PacketRegistry.getPacket(packetName).newInstance();
+			List<String> data = new ArrayList<>();
+			for (int i = 0; i < packet.packetSize(); i++) {
+				data.add(inputStream.readUTF());
+			}
+
+			packet.readPacket(data);
+
+			System.out.println("Processed packet " + packet.getClass().getSimpleName());
+			listeners.forEach(listener -> listener.onPacketReceived(client, packet));
+		}
 	}
 
 	public void writePacket(IPacket packet, DataOutputStream outputStream) throws IOException {
@@ -30,5 +45,13 @@ public class PacketManager {
 		}
 
 		outputStream.flush();
+	}
+
+	public void addListener(PacketListener listener) {
+		listeners.add(listener);
+	}
+
+	public void removeListener(PacketListener listener) {
+		listeners.remove(listener);
 	}
 }

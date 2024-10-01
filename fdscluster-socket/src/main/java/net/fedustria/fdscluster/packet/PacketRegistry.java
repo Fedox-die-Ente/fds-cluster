@@ -1,5 +1,7 @@
 package net.fedustria.fdscluster.packet;
 
+import net.fedustria.fdscluster.packet.impl.PacketShareSetupKey;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,7 +17,7 @@ public class PacketRegistry {
 	private static final Map<String, Class<? extends IPacket>> packets = new HashMap<>();
 
 	static {
-		// TODO: Register Packets
+		registerPacket(PacketShareSetupKey.class);
 	}
 
 	public static Class<? extends IPacket> getPacket(final String name) {

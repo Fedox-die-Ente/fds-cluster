@@ -1,12 +1,14 @@
 package net.fedustria.fdscluster.server;
 
+import net.fedustria.fdscluster.FSocketServer;
+import net.fedustria.fdscluster.packet.PacketManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.Closeable;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.net.Socket;
-import net.fedustria.fdscluster.FSocketServer;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * © 2024 Florian O and Fabian W.
@@ -18,13 +20,18 @@ import org.slf4j.LoggerFactory;
 public class ConnectedClient implements Closeable, Runnable {
 
 	private static final Logger LOG = LoggerFactory.getLogger(ConnectedClient.class);
-
-	private final Socket socket;
 	private final FSocketServer server;
+	private final Socket socket;
+	private final PacketManager packetManager;
 	private DataOutputStream dataOutputStream;
 	private DataInputStream dataInputStream;
 
-	public ConnectedClient(final FSocketServer server, final Socket socket) {
+	public ConnectedClient(
+		PacketManager packetManager,
+		final FSocketServer server,
+		final Socket socket
+	) {
+		this.packetManager = packetManager;
 		this.server = server;
 		this.socket = socket;
 
@@ -38,7 +45,17 @@ public class ConnectedClient implements Closeable, Runnable {
 	}
 
 	@Override
-	public void run() {}
+	public void run() {
+		try {
+			String userInput;
+
+			try {
+				packetManager.processPackets(dataInputStream, this);
+			} catch (Exception e) {}
+		} catch (Exception e) {
+			LOG.error("Failed to process client.", e);
+		}
+	}
 
 	public Socket getSocket() {
 		return socket;

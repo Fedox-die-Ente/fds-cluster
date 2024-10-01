@@ -11,10 +11,10 @@ repositories {
 
 dependencies {
     implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.16'
-    implementation group: 'org.slf4j', name: 'slf4j-reload4j', version: '2.0.16'
 
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'org.slf4j:slf4j-simple:2.0.16'
 }
 
 test {
