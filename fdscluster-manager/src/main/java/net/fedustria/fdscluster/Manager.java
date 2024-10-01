@@ -43,6 +43,7 @@ public class Manager {
         ConsoleUtils.printColoredLn("");
     }
 
+
     private static void createDirectories() {
     }
 

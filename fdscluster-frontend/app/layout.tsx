@@ -2,7 +2,6 @@ import type {Metadata} from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import React from "react";
-import ThemeSwitcher from "@/components/fdscluster/theme-switcher";
 import {ThemeProvider} from "next-themes";
 
 const redHatDisplay = localFont({
@@ -28,13 +27,13 @@ export default function RootLayout({
 		>
 		<ThemeProvider
 			attribute="class"
-			defaultTheme="dark"
+			defaultTheme="light"
 			enableSystem
 			disableTransitionOnChange
 		>
 			{children}
 			<div className="fixed bottom-4 right-4">
-				<ThemeSwitcher/>
+				{/*<ThemeSwitcher/>*/}
 			</div>
 		</ThemeProvider>
 
