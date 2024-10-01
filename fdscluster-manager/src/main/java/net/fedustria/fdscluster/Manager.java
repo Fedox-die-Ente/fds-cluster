@@ -3,6 +3,7 @@ package net.fedustria.fdscluster;
 import lombok.Getter;
 import net.fedustria.fdscluster.command.CommandHandler;
 import net.fedustria.fdscluster.utils.ConsoleUtils;
+import net.fedustria.fdscluster.utils.MegaUtils;
 import net.fedustria.fdscluster.utils.logger.Logger;
 
 import java.io.BufferedReader;
@@ -65,7 +66,7 @@ public class Manager {
 		if (!finishedSetup) {
 			Logger.info("Welcome to the FDSCluster, please finish the setup in your browser.");
 			Logger.info("You can access the setup by visiting: https://cloud.fedustria.net/setup");
-			Logger.info("Your configuration token is: %s", "1234567890");
+			Logger.info("Your configuration token is: %s", MegaUtils.generateKey());
 		}
 
 		showPrefix();
