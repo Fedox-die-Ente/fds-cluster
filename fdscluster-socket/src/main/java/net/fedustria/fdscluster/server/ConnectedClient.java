@@ -1,13 +1,12 @@
 package net.fedustria.fdscluster.server;
 
-import net.fedustria.fdscluster.FSocketServer;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.io.Closeable;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.net.Socket;
+import net.fedustria.fdscluster.FSocketServer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * © 2024 Florian O and Fabian W.
@@ -17,43 +16,42 @@ import java.net.Socket;
  */
 
 public class ConnectedClient implements Closeable, Runnable {
-    private static final Logger LOG = LoggerFactory.getLogger(ConnectedClient.class);
 
-    private final Socket socket;
-    private final FSocketServer server;
-    private DataOutputStream dataOutputStream;
-    private DataInputStream dataInputStream;
+	private static final Logger LOG = LoggerFactory.getLogger(ConnectedClient.class);
 
-    public ConnectedClient(final FSocketServer server, final Socket socket) {
-        this.server = server;
-        this.socket = socket;
+	private final Socket socket;
+	private final FSocketServer server;
+	private DataOutputStream dataOutputStream;
+	private DataInputStream dataInputStream;
 
-        try {
-            dataOutputStream = new DataOutputStream(socket.getOutputStream());
-            dataInputStream = new DataInputStream(socket.getInputStream());
-        } catch (final Exception e) {
-            LOG.error("Failed to create client.", e);
-            close();
-        }
-    }
+	public ConnectedClient(final FSocketServer server, final Socket socket) {
+		this.server = server;
+		this.socket = socket;
 
-    @Override
-    public void run() {
+		try {
+			dataOutputStream = new DataOutputStream(socket.getOutputStream());
+			dataInputStream = new DataInputStream(socket.getInputStream());
+		} catch (final Exception e) {
+			LOG.error("Failed to create client.", e);
+			close();
+		}
+	}
 
-    }
+	@Override
+	public void run() {}
 
-    public Socket getSocket() {
-        return socket;
-    }
+	public Socket getSocket() {
+		return socket;
+	}
 
-    @Override
-    public void close() {
-        try {
-            dataOutputStream.close();
-            dataInputStream.close();
-            socket.close();
-        } catch (final Exception e) {
-            LOG.error("Failed to close client.", e);
-        }
-    }
+	@Override
+	public void close() {
+		try {
+			dataOutputStream.close();
+			dataInputStream.close();
+			socket.close();
+		} catch (final Exception e) {
+			LOG.error("Failed to close client.", e);
+		}
+	}
 }

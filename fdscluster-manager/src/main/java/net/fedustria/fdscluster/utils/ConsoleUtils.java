@@ -8,8 +8,8 @@ package net.fedustria.fdscluster.utils;
  */
 
 public class ConsoleUtils {
-    public static void printColoredLn(String... in) {
-        System.out.println(String.join(" ", in));
-    }
 
+	public static void printColoredLn(String... in) {
+		System.out.println(String.join(" ", in));
+	}
 }

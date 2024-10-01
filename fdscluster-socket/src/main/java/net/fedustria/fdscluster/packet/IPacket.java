@@ -10,9 +10,9 @@ import java.util.List;
  */
 
 public interface IPacket {
-    List<String> writePacket();
+	List<String> writePacket();
 
-    void readPacket(List<String> data);
+	void readPacket(List<String> data);
 
-    int packetSize();
+	int packetSize();
 }

@@ -1,11 +1,10 @@
 package net.fedustria.fdscluster.command;
 
-import lombok.Getter;
+import static java.util.Collections.unmodifiableList;
 
 import java.util.List;
 import java.util.Set;
-
-import static java.util.Collections.unmodifiableList;
+import lombok.Getter;
 
 /**
  * © 2024 Florian O and Fabian W.
@@ -15,28 +14,32 @@ import static java.util.Collections.unmodifiableList;
  */
 
 public abstract class Command {
-    @Getter
-    private final String name;
-    @Getter
-    private final String description;
-    @Getter
-    private final Set<String> aliases;
-    private final List<String> parameters;
 
-    public Command(String name, String description, Set<String> aliases, List<String> parameters) {
-        this.name = name;
-        this.description = description;
-        this.aliases = aliases;
-        this.parameters = parameters;
-    }
-    
-    public List<String> getParameters() {
-        return unmodifiableList(parameters);
-    }
+	@Getter
+	private final String name;
 
-    public long getParameterCount() {
-        return parameters.size();
-    }
+	@Getter
+	private final String description;
 
-    public abstract boolean execute(String[] args);
+	@Getter
+	private final Set<String> aliases;
+
+	private final List<String> parameters;
+
+	public Command(String name, String description, Set<String> aliases, List<String> parameters) {
+		this.name = name;
+		this.description = description;
+		this.aliases = aliases;
+		this.parameters = parameters;
+	}
+
+	public List<String> getParameters() {
+		return unmodifiableList(parameters);
+	}
+
+	public long getParameterCount() {
+		return parameters.size();
+	}
+
+	public abstract boolean execute(String[] args);
 }

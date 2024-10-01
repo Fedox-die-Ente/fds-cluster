@@ -1,13 +1,12 @@
 package net.fedustria.fdscluster.command;
 
-import net.fedustria.fdscluster.command.impl.HelpCommand;
-import net.fedustria.fdscluster.command.impl.ShutdownCommand;
-import net.fedustria.fdscluster.command.impl.VersionCommand;
+import static java.util.Collections.unmodifiableSet;
 
 import java.util.HashSet;
 import java.util.Set;
-
-import static java.util.Collections.unmodifiableSet;
+import net.fedustria.fdscluster.command.impl.HelpCommand;
+import net.fedustria.fdscluster.command.impl.ShutdownCommand;
+import net.fedustria.fdscluster.command.impl.VersionCommand;
 
 /**
  * © 2024 Florian O and Fabian W.
@@ -17,19 +16,20 @@ import static java.util.Collections.unmodifiableSet;
  */
 
 public class CommandHandler {
-    private final Set<Command> commands = new HashSet<>();
 
-    public CommandHandler() {
-        addCommand(new HelpCommand());
-        addCommand(new ShutdownCommand());
-        addCommand(new VersionCommand());
-    }
+	private final Set<Command> commands = new HashSet<>();
 
-    public void addCommand(Command command) {
-        commands.add(command);
-    }
+	public CommandHandler() {
+		addCommand(new HelpCommand());
+		addCommand(new ShutdownCommand());
+		addCommand(new VersionCommand());
+	}
 
-    public Set<Command> getCommands() {
-        return unmodifiableSet(commands);
-    }
+	public void addCommand(Command command) {
+		commands.add(command);
+	}
+
+	public Set<Command> getCommands() {
+		return unmodifiableSet(commands);
+	}
 }

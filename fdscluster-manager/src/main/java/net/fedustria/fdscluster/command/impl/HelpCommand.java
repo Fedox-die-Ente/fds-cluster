@@ -1,11 +1,10 @@
 package net.fedustria.fdscluster.command.impl;
 
+import java.util.List;
+import java.util.Set;
 import net.fedustria.fdscluster.Manager;
 import net.fedustria.fdscluster.command.Command;
 import net.fedustria.fdscluster.utils.logger.Logger;
-
-import java.util.List;
-import java.util.Set;
 
 /**
  * © 2024 Florian O and Fabian W.
@@ -16,29 +15,32 @@ import java.util.Set;
 
 public class HelpCommand extends Command {
 
-    private final String commandTemplate = "> %name% (%aliases%) - %description%";
+	private final String commandTemplate = "> %name% (%aliases%) - %description%";
 
-    public HelpCommand() {
-        super("help", "Opens this menu", Set.of("?", "commands"), List.of());
-    }
+	public HelpCommand() {
+		super("help", "Opens this menu", Set.of("?", "commands"), List.of());
+	}
 
-    @Override
-    public boolean execute(String[] args) {
+	@Override
+	public boolean execute(String[] args) {
+		Manager.getCommandHandler()
+			.getCommands()
+			.forEach(command -> {
+				Set<String> aliases = command.getAliases();
+				String aliasesString = aliases.isEmpty() ? "/" : aliases.toString();
 
-        Manager.getCommandHandler().getCommands().forEach(command -> {
+				if (aliasesString.length() > 2) {
+					aliasesString = aliasesString.substring(1, aliasesString.length() - 1);
+				}
 
-            Set<String> aliases = command.getAliases();
-            String aliasesString = aliases.isEmpty() ? "/" : aliases.toString();
+				Logger.info(
+					commandTemplate
+						.replace("%name%", command.getName())
+						.replace("%aliases%", aliasesString)
+						.replace("%description%", command.getDescription())
+				);
+			});
 
-            if (aliasesString.length() > 2) {
-                aliasesString = aliasesString.substring(1, aliasesString.length() - 1);
-            }
-
-            Logger.info(commandTemplate.replace("%name%", command.getName())
-                    .replace("%aliases%", aliasesString)
-                    .replace("%description%", command.getDescription()));
-        });
-
-        return false;
-    }
+		return false;
+	}
 }

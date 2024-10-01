@@ -1,9 +1,8 @@
 package net.fedustria.fdscluster;
 
+import java.net.Socket;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.net.Socket;
 
 /**
  * © 2024 Florian O and Fabian W.
@@ -13,29 +12,29 @@ import java.net.Socket;
  */
 
 public class FSocketClient {
-    private static final Logger LOG = LoggerFactory.getLogger(FSocketClient.class);
-    private final String host;
-    private final int port;
 
-    private Thread thread;
+	private static final Logger LOG = LoggerFactory.getLogger(FSocketClient.class);
+	private final String host;
+	private final int port;
 
-    public FSocketClient(String host, int port) {
-        this.host = host;
-        this.port = port;
-    }
+	private Thread thread;
 
-    public void connect() {
-        thread = new Thread(() -> {
-            try (final var socket = new Socket(host, port)) {
-                LOG.info("Connected to {}.", socket.getInetAddress().getHostAddress());
+	public FSocketClient(String host, int port) {
+		this.host = host;
+		this.port = port;
+	}
 
+	public void connect() {
+		thread = new Thread(() -> {
+			try (final var socket = new Socket(host, port)) {
+				LOG.info("Connected to {}.", socket.getInetAddress().getHostAddress());
 
-                LOG.info("Disconnected from {}.", socket.getInetAddress().getHostAddress());
-            } catch (final Exception e) {
-                LOG.error("Failed to connect.", e);
-            }
-        });
+				LOG.info("Disconnected from {}.", socket.getInetAddress().getHostAddress());
+			} catch (final Exception e) {
+				LOG.error("Failed to connect.", e);
+			}
+		});
 
-        thread.start();
-    }
+		thread.start();
+	}
 }

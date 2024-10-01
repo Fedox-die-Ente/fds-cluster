@@ -11,35 +11,32 @@ import net.fedustria.fdscluster.utils.Colors;
  */
 
 public enum LogTypes {
+	INFO,
+	WARNING,
+	ERROR,
+	DEBUG,
+	SUCCESS;
 
-    INFO,
-    WARNING,
-    ERROR,
-    DEBUG,
-    SUCCESS;
+	@Getter
+	private String color;
 
-    @Getter
-    private String color;
-
-    LogTypes() {
-        switch (this) {
-            case INFO:
-                color = Colors.ANSI_BLUE;
-                break;
-            case WARNING:
-                color = Colors.ANSI_YELLOW;
-                break;
-            case ERROR:
-                color = Colors.ANSI_RED;
-                break;
-            case DEBUG:
-                color = Colors.ANSI_PURPLE;
-                break;
-            case SUCCESS:
-                color = Colors.ANSI_GREEN;
-                break;
-        }
-    }
-
-
+	LogTypes() {
+		switch (this) {
+			case INFO:
+				color = Colors.ANSI_BLUE;
+				break;
+			case WARNING:
+				color = Colors.ANSI_YELLOW;
+				break;
+			case ERROR:
+				color = Colors.ANSI_RED;
+				break;
+			case DEBUG:
+				color = Colors.ANSI_PURPLE;
+				break;
+			case SUCCESS:
+				color = Colors.ANSI_GREEN;
+				break;
+		}
+	}
 }

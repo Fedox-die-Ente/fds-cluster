@@ -1,0 +1,9 @@
+plugins:
+  - prettier-plugin-java
+
+tabWidth: 4
+useTabs: true
+trailingComma: none
+printWidth: 100
+semi: true
+arrowParens: avoid

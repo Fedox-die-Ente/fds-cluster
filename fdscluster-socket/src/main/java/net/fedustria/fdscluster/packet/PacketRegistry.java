@@ -11,17 +11,18 @@ import java.util.Map;
  */
 
 public class PacketRegistry {
-    private static final Map<String, Class<? extends IPacket>> packets = new HashMap<>();
 
-    static {
-        // TODO: Register Packets
-    }
+	private static final Map<String, Class<? extends IPacket>> packets = new HashMap<>();
 
-    public static Class<? extends IPacket> getPacket(final String name) {
-        return packets.get(name);
-    }
+	static {
+		// TODO: Register Packets
+	}
 
-    public static void registerPacket(final Class<? extends IPacket> packet) {
-        packets.put(packet.getSimpleName(), packet);
-    }
+	public static Class<? extends IPacket> getPacket(final String name) {
+		return packets.get(name);
+	}
+
+	public static void registerPacket(final Class<? extends IPacket> packet) {
+		packets.put(packet.getSimpleName(), packet);
+	}
 }

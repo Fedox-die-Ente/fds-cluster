@@ -1,11 +1,10 @@
 package net.fedustria.fdscluster.command.impl;
 
+import java.util.List;
+import java.util.Set;
 import net.fedustria.fdscluster.Manager;
 import net.fedustria.fdscluster.command.Command;
 import net.fedustria.fdscluster.utils.logger.Logger;
-
-import java.util.List;
-import java.util.Set;
 
 /**
  * © 2024 Florian O and Fabian W.
@@ -16,25 +15,29 @@ import java.util.Set;
 
 public class ShutdownCommand extends Command {
 
-    public ShutdownCommand() {
-        super("shutdown", "Shutdown the manager of the cloud", Set.of("stop", "end", "quit", "kill"), List.of());
-    }
+	public ShutdownCommand() {
+		super(
+			"shutdown",
+			"Shutdown the manager of the cloud",
+			Set.of("stop", "end", "quit", "kill"),
+			List.of()
+		);
+	}
 
+	@Override
+	public boolean execute(String[] args) {
+		Logger.info("Shutting down the manager...");
 
-    @Override
-    public boolean execute(String[] args) {
-        Logger.info("Shutting down the manager...");
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			Logger.error("An error occurred while shutting down the manager: " + e);
+			Logger.warning("The manager will now exit.");
+			System.exit(1);
+		}
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            Logger.error("An error occurred while shutting down the manager: " + e);
-            Logger.warning("The manager will now exit.");
-            System.exit(1);
-        }
+		Manager.initShutdown();
 
-        Manager.initShutdown();
-
-        return true;
-    }
+		return true;
+	}
 }
