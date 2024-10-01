@@ -1,7 +1,7 @@
 {
 	"name": "fdscluster",
 	"version": "1.0.0",
-	"description": "<h1 align=\"center\" id=\"title\">FedustriaCluster</h1>",
+	"description": "Simple. Fast. Reliable.",
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"No tests specified\" && exit 0",
