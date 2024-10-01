@@ -1,0 +1,22 @@
+{
+	"name": "fdscluster",
+	"version": "1.0.0",
+	"description": "<h1 align=\"center\" id=\"title\">FedustriaCluster</h1>",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"No tests specified\" && exit 0",
+		"prepare": "husky"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"husky": "^6.0.0"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "npm test",
+			"commit-msg": "commitlint --edit $1"
+		}
+	}
+}
