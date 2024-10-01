@@ -1,12 +1,11 @@
 package net.fedustria.fdscluster.packet;
 
-import net.fedustria.fdscluster.server.ConnectedClient;
-
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import net.fedustria.fdscluster.server.ConnectedClient;
 
 /**
  * © 2024 Florian O and Fabian W.

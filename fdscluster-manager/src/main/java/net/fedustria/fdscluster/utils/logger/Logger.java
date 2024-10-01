@@ -1,12 +1,11 @@
 package net.fedustria.fdscluster.utils.logger;
 
-import net.fedustria.fdscluster.utils.Colors;
-
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.Date;
+import net.fedustria.fdscluster.utils.Colors;
 
 /**
  * © 2024 Florian O and Fabian W.

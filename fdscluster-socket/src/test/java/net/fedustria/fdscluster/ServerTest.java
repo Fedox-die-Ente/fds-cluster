@@ -1,9 +1,8 @@
 package net.fedustria.fdscluster;
 
+import java.io.IOException;
 import net.fedustria.fdscluster.packet.impl.PacketShareSetupKey;
 import org.junit.jupiter.api.Test;
-
-import java.io.IOException;
 
 /**
  * © 2024 Florian O and Fabian W.

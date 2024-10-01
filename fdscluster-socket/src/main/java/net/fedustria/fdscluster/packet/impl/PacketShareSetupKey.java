@@ -1,8 +1,7 @@
 package net.fedustria.fdscluster.packet.impl;
 
-import net.fedustria.fdscluster.packet.IPacket;
-
 import java.util.List;
+import net.fedustria.fdscluster.packet.IPacket;
 
 /**
  * © 2024 Florian O and Fabian W.

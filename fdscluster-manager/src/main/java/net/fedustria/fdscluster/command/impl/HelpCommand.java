@@ -1,11 +1,10 @@
 package net.fedustria.fdscluster.command.impl;
 
+import java.util.List;
+import java.util.Set;
 import net.fedustria.fdscluster.Manager;
 import net.fedustria.fdscluster.command.Command;
 import net.fedustria.fdscluster.utils.logger.Logger;
-
-import java.util.List;
-import java.util.Set;
 
 /**
  * © 2024 Florian O and Fabian W.

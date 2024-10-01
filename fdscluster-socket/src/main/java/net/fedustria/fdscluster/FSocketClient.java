@@ -1,16 +1,15 @@
 package net.fedustria.fdscluster;
 
-import net.fedustria.fdscluster.packet.IPacket;
-import net.fedustria.fdscluster.packet.PacketManager;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
+import net.fedustria.fdscluster.packet.IPacket;
+import net.fedustria.fdscluster.packet.PacketManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * © 2024 Florian O and Fabian W.

@@ -1,9 +1,8 @@
 package net.fedustria.fdscluster.packet;
 
-import net.fedustria.fdscluster.packet.impl.PacketShareSetupKey;
-
 import java.util.HashMap;
 import java.util.Map;
+import net.fedustria.fdscluster.packet.impl.PacketShareSetupKey;
 
 /**
  * © 2024 Florian O and Fabian W.

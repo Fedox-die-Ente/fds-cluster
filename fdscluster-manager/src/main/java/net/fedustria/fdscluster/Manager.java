@@ -1,20 +1,19 @@
 package net.fedustria.fdscluster;
 
-import lombok.Getter;
-import net.fedustria.fdscluster.command.CommandHandler;
-import net.fedustria.fdscluster.utils.ConsoleUtils;
-import net.fedustria.fdscluster.utils.MegaUtils;
-import net.fedustria.fdscluster.utils.logger.Logger;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.Calendar;
-
 import static java.util.Arrays.copyOfRange;
 import static net.fedustria.fdscluster.utils.Colors.ANSI_LIGHT_BLUE;
 import static net.fedustria.fdscluster.utils.Colors.ANSI_RESET;
 import static net.fedustria.fdscluster.utils.Constants.ASCII_ART;
 import static net.fedustria.fdscluster.utils.Constants.PREFIX;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.Calendar;
+import lombok.Getter;
+import net.fedustria.fdscluster.command.CommandHandler;
+import net.fedustria.fdscluster.utils.ConsoleUtils;
+import net.fedustria.fdscluster.utils.MegaUtils;
+import net.fedustria.fdscluster.utils.logger.Logger;
 
 /**
  * © 2024 Florian O. and Fabian W.

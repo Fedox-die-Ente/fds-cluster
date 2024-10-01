@@ -1,14 +1,13 @@
 package net.fedustria.fdscluster.server;
 
-import net.fedustria.fdscluster.FSocketServer;
-import net.fedustria.fdscluster.packet.PacketManager;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.io.Closeable;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.net.Socket;
+import net.fedustria.fdscluster.FSocketServer;
+import net.fedustria.fdscluster.packet.PacketManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * © 2024 Florian O and Fabian W.
