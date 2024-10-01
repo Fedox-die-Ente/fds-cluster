@@ -8,7 +8,7 @@
 <h2>🤵 Credits</h2>
 
 - [Fedox-die-Ente](https://github.com/Fedox-die-Ente) - Project Manager & Developer
-- [Austria7](https://github.com/Austria7) - Lead Developer
+- [Austria7](https://github.com/Austria7) - Co-Founder
 
 <h2>🛡️ License:</h2>
 
