@@ -24,6 +24,7 @@ import static net.fedustria.fdscluster.utils.Constants.PREFIX;
 
 public class Manager {
 
+    private static final boolean finishedSetup = false;
     @Getter
     private static CommandHandler commandHandler;
 
@@ -51,7 +52,13 @@ public class Manager {
         commandHandler = new CommandHandler();
 
         showPrefix();
-        handleInput();
+
+        if (!finishedSetup) {
+            Logger.info("Welcome to the FDSCluster, please finish the setup in your browser.");
+            Logger.info("You can access the setup by visiting: https://cloud.fedustria.net/setup");
+            Logger.info("Your configuration token is: %s", "1234567890");
+            handleInput();
+        }
     }
 
     private static void handleInput() {
@@ -60,6 +67,11 @@ public class Manager {
             while ((line = br.readLine()) != null) {
                 String[] args = line.split(" ");
                 String command = args[0];
+
+                if (!finishedSetup) {
+                    Logger.info("Please finish the setup in your browser.");
+                    continue;
+                }
 
                 commandHandler.getCommands().stream()
                         .filter(cmd -> cmd.getName().equalsIgnoreCase(command) || cmd.getAliases().contains(command))

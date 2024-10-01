@@ -22,7 +22,7 @@ export default function CloudConnection({onTokenChange}: CloudConnectionProps) {
 					id="secret-token"
 					placeholder="xxxxxxxxxxxxx"
 					value={token}
-					onChange={handleTokenChange} // Wertänderung erfassen
+					onChange={handleTokenChange}
 					className="w-full px-3 py-2 border rounded-md text-sm"
 				/>
 			</div>

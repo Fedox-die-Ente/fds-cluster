@@ -105,7 +105,6 @@ export default function SetupPage() {
 				</motion.div>
 			</div>
 
-			{/* Decorative elements */}
 			<div
 				className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-black to-transparent opacity-30"/>
 			<div
