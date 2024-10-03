@@ -10,6 +10,19 @@ export default function Head() {
 
 			<link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
 			<link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
+			<meta property="og:image" content="/image.png" />
+
+			<meta property="twitter:card" content="summary_large_image" />
+			<meta property="twitter:url" content="https://cloud.fedustria.net/" />
+			<meta
+				property="twitter:title"
+				content="FedustriaCluster - Modern Minecraft Cloud Solution"
+			/>
+			<meta
+				property="twitter:description"
+				content="The FedustriaCluster is a modern minecraft cloud solution."
+			/>
+			<meta property="twitter:image" content="/image.png" />
 
 			<link rel="manifest" href="/site.webmanifest" />
 		</>
