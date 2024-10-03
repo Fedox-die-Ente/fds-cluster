@@ -36,7 +36,7 @@ export default function CustomSelect({
 
 	useEffect(() => {
 		if (open !== undefined) setIsOpen(open);
-	}, []);
+	}, [open]);
 
 	useEffect(() => {
 		if (value) {

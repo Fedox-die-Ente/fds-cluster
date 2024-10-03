@@ -33,8 +33,8 @@ export default function DownloadSection() {
 							<p className="font-semibold">Maintenance Mode</p>
 						</div>
 						<p className="mt-2">
-							We're currently performing maintenance on our download servers. Please
-							check back later.
+							We&apos;re currently performing maintenance on our download servers.
+							Please check back later.
 						</p>
 					</motion.div>
 				) : (

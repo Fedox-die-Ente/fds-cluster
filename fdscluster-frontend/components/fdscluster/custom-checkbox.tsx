@@ -5,10 +5,10 @@ import { cn } from "@/lib/utils";
 import { Check } from "lucide-react";
 
 export interface CustomCheckboxProps {
-	defaultValue?: boolean; // Optional value prop
-	onChange?: (value: boolean) => void; // Optional onChange callback
-	disabled?: boolean; // Optional disabled prop
-	label?: string; // Optional label
+	defaultValue?: boolean;
+	onChange?: (value: boolean) => void;
+	disabled?: boolean;
+	label?: string;
 }
 
 const CustomCheckbox: React.FC<CustomCheckboxProps> = ({
@@ -23,6 +23,7 @@ const CustomCheckbox: React.FC<CustomCheckboxProps> = ({
 		console.log("Toggle clicked!");
 		if (disabled) return;
 		setChecked(!checked);
+		onChange && onChange(!checked);
 	};
 
 	return (
