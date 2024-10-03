@@ -23,7 +23,9 @@ const CustomCheckbox: React.FC<CustomCheckboxProps> = ({
 		console.log("Toggle clicked!");
 		if (disabled) return;
 		setChecked(!checked);
-		onChange && onChange(!checked);
+		if (onChange) {
+			onChange(!checked);
+		}
 	};
 
 	return (
