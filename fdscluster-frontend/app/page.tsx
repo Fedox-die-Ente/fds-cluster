@@ -65,15 +65,19 @@ const testimonials = [
 const faqs = [
 	{
 		question: "What is a Minecraft cloud system?",
-		answer: "A Minecraft cloud system is a platform that allows you to easily manage and scale Minecraft servers in the cloud."
-	},
-	{
-		question: "How does it improve performance?",
-		answer: "It optimizes resource allocation, provides load balancing, and utilizes high-performance hardware to ensure smooth gameplay."
+		answer: "A Minecraft cloud system, like ours, allows you to manage and deploy Minecraft server instances across multiple machines, automating the process of starting, stopping, and configuring servers."
 	},
 	{
 		question: "Is it easy to set up?",
-		answer: "Yes! Our user-friendly dashboard and powerful API make it simple to get started and manage your Minecraft servers."
+		answer: "Yes! Our platform is designed for simplicity, with an intuitive dashboard and powerful API to help you easily manage your Minecraft server infrastructure."
+	},
+	{
+		question: "Can I customize my server settings?",
+		answer: "Absolutely! You can configure each server instance individually with custom settings, mods, and plugins."
+	},
+	{
+		question: "Do you provide server hosting?",
+		answer: "No, we do not offer hosting services. Our platform is a management system that helps you control and organize your existing server infrastructure."
 	}
 ];
 
