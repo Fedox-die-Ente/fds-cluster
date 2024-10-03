@@ -1,33 +1,33 @@
-"use client"
+"use client";
 
-import React, {useState} from 'react'
-import {ArrowLeft, Database, Server} from 'lucide-react'
-import {Button} from "@/components/ui/button"
-import {RadioGroup, RadioGroupItem} from "@/components/ui/radio-group"
-import {Label} from "@/components/ui/label"
-import {Input} from "@/components/ui/input";
+import React, { useState } from "react";
+import { ArrowLeft, Database, Server } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
 
 const databases = [
 	{
-		id: 'mongodb',
-		name: 'MongoDB',
-		description: 'A document-based NoSQL database designed for scalability and flexibility.',
-		icon: Server,
+		id: "mongodb",
+		name: "MongoDB",
+		description: "A document-based NoSQL database designed for scalability and flexibility.",
+		icon: Server
 	},
 	{
-		id: 'mysql',
-		name: 'MySQL',
-		description: 'A popular open-source relational database management system.',
-		icon: Database,
-	},
-]
+		id: "mysql",
+		name: "MySQL",
+		description: "A popular open-source relational database management system.",
+		icon: Database
+	}
+];
 
 export default function DatabaseSetup() {
-	const [selectedDatabase, setSelectedDatabase] = useState('')
+	const [selectedDatabase, setSelectedDatabase] = useState("");
 
 	const handleDatabaseChange = (value: string) => {
-		setSelectedDatabase(value)
-	}
+		setSelectedDatabase(value);
+	};
 
 	return (
 		<div>
@@ -36,14 +36,14 @@ export default function DatabaseSetup() {
 				onValueChange={handleDatabaseChange}
 				className="grid gap-4 md:grid-cols-2"
 			>
-				{databases.map((db) => (
+				{databases.map(db => (
 					<Label
 						key={db.id}
 						htmlFor={db.id}
 						className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover dark:bg-gray-700/50 p-4 hover:bg-accent hover:text-accent-foreground [&:has([data-state=checked])]:border-primary-light dark:[&:has([data-state=checked])]:border-primary-light"
 					>
-						<RadioGroupItem value={db.id} id={db.id} className="sr-only"/>
-						<db.icon className="mb-3 h-6 w-6"/>
+						<RadioGroupItem value={db.id} id={db.id} className="sr-only" />
+						<db.icon className="mb-3 h-6 w-6" />
 						<div className="space-y-1 text-center">
 							<h3 className="font-semibold">{db.name}</h3>
 							<p className="text-sm text-muted-foreground">{db.description}</p>
@@ -55,20 +55,20 @@ export default function DatabaseSetup() {
 			{selectedDatabase && (
 				<div className="mt-6 space-y-4">
 					<h2 className="text-lg font-semibold">Connection Details</h2>
-					{selectedDatabase === 'mongodb' && <MongoDBConnection/>}
-					{selectedDatabase === 'mysql' && <MySQLConnection/>}
+					{selectedDatabase === "mongodb" && <MongoDBConnection />}
+					{selectedDatabase === "mysql" && <MySQLConnection />}
 					<Button
-						variant="outline"
-						onClick={() => setSelectedDatabase('')}
+						variant="default_outline"
+						onClick={() => setSelectedDatabase("")}
 						className="w-full mt-4"
 					>
-						<ArrowLeft className="w-4 h-4 mr-2"/>
+						<ArrowLeft className="w-4 h-4 mr-2" />
 						Change Database Selection
 					</Button>
 				</div>
 			)}
 		</div>
-	)
+	);
 }
 
 const MongoDBConnection = () => {
@@ -93,8 +93,8 @@ const MongoDBConnection = () => {
 				/>
 			</div>
 		</div>
-	)
-}
+	);
+};
 
 const MySQLConnection = () => {
 	return (
@@ -145,5 +145,5 @@ const MySQLConnection = () => {
 				/>
 			</div>
 		</div>
-	)
-}
+	);
+};
