@@ -1,8 +1,9 @@
 package net.fedustria.fdscluster;
 
-import java.io.IOException;
 import net.fedustria.fdscluster.packet.impl.PacketShareSetupKey;
 import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
 
 /**
  * © 2024 Florian O and Fabian W.
@@ -16,6 +17,15 @@ public class ServerTest {
 	@Test
 	public void testServerCreation() throws IOException {
 		FSocketServer server = new FSocketServer(7777);
+
+		server
+			.getPacketManager()
+			.addListener((client, packet) -> {
+				if (packet instanceof PacketShareSetupKey) {
+					System.out.println(client.getSocket().getInetAddress().getHostAddress());
+				}
+			});
+
 		server.listen();
 
 		FSocketClient client = new FSocketClient("127.0.0.1", 7777);

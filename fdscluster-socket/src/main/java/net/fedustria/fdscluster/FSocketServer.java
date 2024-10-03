@@ -1,15 +1,16 @@
 package net.fedustria.fdscluster;
 
+import net.fedustria.fdscluster.packet.PacketManager;
+import net.fedustria.fdscluster.server.ConnectedClient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import net.fedustria.fdscluster.packet.PacketManager;
-import net.fedustria.fdscluster.server.ConnectedClient;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * © 2024 Florian O and Fabian W.
@@ -43,7 +44,7 @@ public class FSocketServer {
 					connectedClients.add(connectedClient);
 					executor.execute(connectedClient);
 
-					LOG.info("Accepted connection from " + socket.getInetAddress().getAddress());
+					LOG.info("Accepted connection from ", socket.getInetAddress().getAddress());
 				} catch (Exception e) {
 					LOG.error("Failed to accept connection.", e);
 				}
@@ -51,5 +52,9 @@ public class FSocketServer {
 		});
 
 		thread.start();
+	}
+
+	public PacketManager getPacketManager() {
+		return packetManager;
 	}
 }
