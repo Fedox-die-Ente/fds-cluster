@@ -2,7 +2,7 @@ import { Cloud } from "lucide-react";
 
 export default function Footer() {
 	return (
-		<footer className="bg-gray-800 dark:bg-dark-two text-white py-8">
+		<footer className="bg-gray-800 dark:bg-dark-one text-white py-8">
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div className="flex justify-between items-center">
 					<div className="flex items-center">

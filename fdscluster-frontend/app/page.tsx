@@ -15,7 +15,6 @@ import DownloadSection from "@/components/fdscluster/download-section";
 import Footer from "@/components/fdscluster/footer";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { useTheme } from "next-themes";
 import { useEffect, useRef } from "react";
 import { InfiniteMovingCards } from "@/components/fdscluster/scroll";
 
@@ -84,8 +83,6 @@ const teamMembers = [
 ];
 
 export default function LandingPage() {
-	const { theme } = useTheme();
-
 	const testimonialsRef = useRef<HTMLDivElement>(null);
 	const scrollSpeed = 9;
 
@@ -220,9 +217,40 @@ export default function LandingPage() {
 					</div>
 				</section>
 
+				<section id="technologies" className="bg-gray-100 dark:bg-dark-one py-16">
+					<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+						<h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">
+							Technologies We Use
+						</h2>
+						<div className="flex justify-center items-center space-x-8">
+							{technologies.map((tech, index) => (
+								<motion.div
+									key={tech.name}
+									className="bg-white dark:bg-dark-two p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+									initial={{ opacity: 0, y: 20 }}
+									animate={{ opacity: 1, y: 0 }}
+									transition={{ duration: 0.5, delay: index * 0.1 }}
+								>
+									<div className="flex flex-col items-center text-center">
+										<div className="bg-blue-100 dark:bg-primary/30 p-3 rounded-full mb-4">
+											<tech.icon className="h-8 w-8 text-blue-600 dark:text-blue-400" />
+										</div>
+										<h3 className="text-xl font-semibold mb-2 dark:text-white">
+											{tech.name}
+										</h3>
+										<p className="text-gray-600 dark:text-gray-300 text-sm">
+											{tech.description}
+										</p>
+									</div>
+								</motion.div>
+							))}
+						</div>
+					</div>
+				</section>
+
 				<section
 					id="testimonials"
-					className="bg-white dark:bg-dark-one py-24 transition-colors duration-300"
+					className="bg-white dark:bg-dark-two py-24 transition-colors duration-300"
 				>
 					<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 						<h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-16">
@@ -241,7 +269,7 @@ export default function LandingPage() {
 
 				<section
 					id="team"
-					className="bg-gray-100 dark:bg-dark-two py-24 transition-colors duration-300"
+					className="bg-gray-100 dark:bg-dark-one py-24 transition-colors duration-300"
 				>
 					<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 						<h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-16">
@@ -251,7 +279,7 @@ export default function LandingPage() {
 							{teamMembers.map((member, index) => (
 								<motion.div
 									key={member.name}
-									className="bg-white dark:bg-dark-one rounded-lg p-8 text-center shadow-lg"
+									className="bg-white dark:bg-dark-two rounded-lg p-8 text-center shadow-lg"
 									initial={{ opacity: 0, y: 20 }}
 									animate={{ opacity: 1, y: 0 }}
 									transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -279,7 +307,7 @@ export default function LandingPage() {
 
 				<section
 					id="faq"
-					className="bg-white dark:bg-dark-one py-24 transition-colors duration-300"
+					className="bg-white dark:bg-dark-two py-24 transition-colors duration-300"
 				>
 					<div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
 						<h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-16">
@@ -289,7 +317,7 @@ export default function LandingPage() {
 							{faqs.map((faq, index) => (
 								<motion.div
 									key={index}
-									className="bg-gray-100 dark:bg-dark-two rounded-lg p-6 shadow-md"
+									className="bg-gray-100 dark:bg-dark-one rounded-lg p-6 shadow-md"
 									initial={{ opacity: 0, y: 20 }}
 									animate={{ opacity: 1, y: 0 }}
 									transition={{ duration: 0.5, delay: index * 0.1 }}
