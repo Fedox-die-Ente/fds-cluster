@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { AlertTriangle, Code, Database, Download } from "lucide-react";
 
 export default function DownloadSection() {
-	const [isMaintenanceMode] = useState(true);
+	const [isMaintenanceMode] = useState(false);
 
 	return (
 		<section

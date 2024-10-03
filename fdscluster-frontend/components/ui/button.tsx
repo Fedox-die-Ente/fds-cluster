@@ -10,17 +10,17 @@ const buttonVariants = cva(
 		variants: {
 			variant: {
 				default_raised:
-					"bg-primary rounded-3xl font-openSans font-semibold text-white text-sm px-5 hover:bg-primary/90",
+					"bg-primary rounded-3xl font-semibold text-white text-sm px-5 hover:bg-primary/90",
 				secondary_raised:
 					"bg-secondary rounded-3xl font-openSans font-semibold text-white text-sm px-5 hover:bg-secondary/90",
 				ghost_raised:
-					"bg-accent font-semibold font-openSans text-black text-opacity-50 rounded-3xl hover:text-accent-foreground/90 ",
+					"bg-accent font-semibold font-openSans text-black text-opacity-50 rounded-3xl hover:text-accent-foreground/90 dark:bg-dark-input dark:text-white",
 				default_outline:
 					"bg-transparent border border-primary rounded-3xl font-openSans font-semibold text-primary text-sm px-5 hover:bg-primary/10",
 				secondary_outline:
 					"bg-transparent border border-secondary rounded-3xl font-openSans font-semibold text-secondary text-sm px-5 hover:bg-secondary/10",
 				ghost_outline:
-					"bg-transparent border border-accent font-semibold font-openSans text-black text-opacity-50 rounded-3xl hover:text-accent-foreground/80"
+					"bg-transparent border border-accent font-semibold font-openSans text-black text-opacity-50 rounded-3xl hover:text-accent-foreground/80 dark:border-white dark:text-white"
 			},
 			size: {
 				default: "h-10 px-8 py-2",

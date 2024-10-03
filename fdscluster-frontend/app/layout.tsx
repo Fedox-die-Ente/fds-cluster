@@ -3,6 +3,7 @@ import "./globals.css";
 import React from "react";
 import { ThemeProvider } from "next-themes";
 import { Open_Sans } from "next/font/google";
+import ThemeSwitcher from "@/components/fdscluster/theme-switcher";
 
 const openSans = Open_Sans({
 	variable: "--font-open-sans",
@@ -22,7 +23,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={`${openSans.variable}`}>
+			<body className={`${openSans.variable} dark:bg-dark-one`}>
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="light"
@@ -30,7 +31,9 @@ export default function RootLayout({
 					disableTransitionOnChange
 				>
 					{children}
-					<div className="fixed bottom-4 right-4">{/*<ThemeSwitcher/>*/}</div>
+					<div className="fixed bottom-4 right-4">
+						<ThemeSwitcher />
+					</div>
 				</ThemeProvider>
 			</body>
 		</html>

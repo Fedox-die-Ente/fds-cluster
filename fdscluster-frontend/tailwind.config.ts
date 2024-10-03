@@ -22,31 +22,27 @@ const config: Config = {
 				redHatDisplay: ["var(--font-redhatdisplay)"]
 			},
 			colors: {
+				svgFillLight: "#ffffff",
+				svgFillDark: "rgb(21, 30, 44)",
 				border: "hsl(var(--border))",
 				input: "hsl(var(--input))",
 				ring: "hsl(var(--ring))",
 				background: "hsl(var(--background))",
 				foreground: "hsl(var(--foreground))",
 				primary: "#2196F3",
-				secondary: "#00BCD4",
+				secondary: "#135b8f",
+				bigred: "#ec3a3a",
 				dark: {
-					one: "#181818",
-					two: "#0C0C0C"
+					one: "rgb(25 35 51)",
+					two: "rgb(21 30 44)",
+					input: "rgb(27,40,56)",
+					border: "rgb(29,45,61)"
 				},
-				highlight: {
-					one: "#DABE57",
-					two: "#D9B346"
+				light: {
+					one: "#FFFFFF",
+					two: "#FAFAFA",
+					input: "#FFFFFF"
 				},
-				// primary: {
-				// 	DEFAULT: "hsl(var(--primary))",
-				// 	foreground: "hsl(var(--primary-foreground))",
-				// 	dark: "#4C73FF",
-				// 	light: "rgb(59 130 246)"
-				// },
-				// secondary: {
-				// 	DEFAULT: "hsl(var(--secondary))",
-				// 	foreground: "hsl(var(--secondary-foreground))"
-				// },
 				destructive: {
 					DEFAULT: "hsl(var(--destructive))",
 					foreground: "hsl(var(--destructive-foreground))"

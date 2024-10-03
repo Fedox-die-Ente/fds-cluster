@@ -43,8 +43,6 @@ public class FSocketServer {
 					);
 					connectedClients.add(connectedClient);
 					executor.execute(connectedClient);
-
-					LOG.info("Accepted connection from ", socket.getInetAddress().getAddress());
 				} catch (Exception e) {
 					LOG.error("Failed to accept connection.", e);
 				}
@@ -56,5 +54,9 @@ public class FSocketServer {
 
 	public PacketManager getPacketManager() {
 		return packetManager;
+	}
+
+	public List<ConnectedClient> getConnectedClients() {
+		return connectedClients;
 	}
 }

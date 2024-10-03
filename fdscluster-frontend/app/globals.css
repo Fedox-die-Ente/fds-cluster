@@ -72,9 +72,28 @@ body {
 @layer base {
     * {
         @apply border-border;
+        font-family: var(--font-open-sans);
     }
 
     body {
         @apply bg-background text-foreground;
+    }
+}
+
+.scroller {
+    --animation-direction: forwards;
+    --animation-duration: 40s; /* Default speed */
+}
+
+.animate-scroll {
+    animation: scroll var(--animation-duration) linear infinite var(--animation-direction);
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%); /* Change to -100% for full scroll */
     }
 }

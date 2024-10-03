@@ -1,13 +1,14 @@
 package net.fedustria.fdscluster.server;
 
-import java.io.Closeable;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.net.Socket;
 import net.fedustria.fdscluster.FSocketServer;
 import net.fedustria.fdscluster.packet.PacketManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.Closeable;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.net.Socket;
 
 /**
  * © 2024 Florian O and Fabian W.
@@ -46,13 +47,12 @@ public class ConnectedClient implements Closeable, Runnable {
 	@Override
 	public void run() {
 		try {
-			String userInput;
-
-			try {
-				packetManager.processPackets(dataInputStream, this);
-			} catch (Exception e) {}
+			while (socket.isConnected()) {
+				packetManager.processPacket(dataInputStream, this);
+			}
 		} catch (Exception e) {
-			LOG.error("Failed to process client.", e);
+			LOG.error("Failed to process packets", e);
+			close();
 		}
 	}
 
@@ -63,6 +63,7 @@ public class ConnectedClient implements Closeable, Runnable {
 	@Override
 	public void close() {
 		try {
+			server.getConnectedClients().remove(this);
 			dataOutputStream.close();
 			dataInputStream.close();
 			socket.close();
