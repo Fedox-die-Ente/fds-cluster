@@ -1,11 +1,13 @@
+"use client";
+
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
-import { cva } from "class-variance-authority";
+import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-	"inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+	"inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 relative overflow-hidden",
 	{
 		variants: {
 			variant: {
@@ -43,32 +45,80 @@ type ButtonVariant =
 	| "default_outline"
 	| "secondary_outline"
 	| "ghost_outline";
-
 type ButtonSize = "default" | "sm" | "lg" | "icon";
 
-type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
-	variant?: ButtonVariant;
-	size?: ButtonSize;
-	icon?: React.ReactNode;
+interface ButtonProps
+	extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+		VariantProps<typeof buttonVariants> {
 	asChild?: boolean;
-	className?: string;
-};
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-	({ className, variant, size, icon, asChild = false, children, ...props }, ref) => {
-		const Comp = asChild ? Slot : "button";
+	icon?: React.ReactNode;
+}
 
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+	({ className, variant, size, asChild = false, icon, children, ...props }, ref) => {
+		const [ripples, setRipples] = React.useState<Array<{ x: number; y: number; size: number }>>(
+			[]
+		);
+
+		const addRipple = (event: React.MouseEvent<HTMLButtonElement>) => {
+			const rippleContainer = event.currentTarget.getBoundingClientRect();
+			const size =
+				rippleContainer.width > rippleContainer.height
+					? rippleContainer.width
+					: rippleContainer.height;
+			const x = event.clientX - rippleContainer.left - size / 2;
+			const y = event.clientY - rippleContainer.top - size / 2;
+			const newRipple = { x, y, size };
+
+			setRipples([...ripples, newRipple]);
+		};
+
+		React.useEffect(() => {
+			const timeouts: NodeJS.Timeout[] = [];
+
+			ripples.forEach((_, index) => {
+				const timeout = setTimeout(() => {
+					setRipples(prevRipples => prevRipples.filter((_, i) => i !== index));
+				}, 850);
+				timeouts.push(timeout);
+			});
+
+			return () => {
+				timeouts.forEach(clearTimeout);
+			};
+		}, [ripples]);
+
+		const Comp = asChild ? Slot : "button";
 		return (
 			<Comp
-				className={cn(
-					"inline-flex items-center justify-center gap-2",
-					buttonVariants({ variant, size }),
-					className
-				)}
+				className={cn(buttonVariants({ variant, size, className }))}
 				ref={ref}
 				{...props}
+				onMouseDown={addRipple}
 			>
-				{icon && <span className="icon">{icon}</span>}
-				{children}
+				<span className="relative inline-flex items-center justify-center gap-2 z-10">
+					{icon && <span className="icon">{icon}</span>}
+					{children}
+				</span>
+				<div className="absolute inset-0 overflow-hidden">
+					{ripples.map((ripple, index) => (
+						<span
+							key={index}
+							style={{
+								position: "absolute",
+								left: ripple.x,
+								top: ripple.y,
+								width: ripple.size,
+								height: ripple.size,
+								transform: "scale(0)",
+								borderRadius: "50%",
+								backgroundColor: "currentColor",
+								opacity: "0.3",
+								animation: `ripple 850ms linear`
+							}}
+						/>
+					))}
+				</div>
 			</Comp>
 		);
 	}

@@ -97,3 +97,14 @@ body {
         transform: translateX(-50%); /* Change to -100% for full scroll */
     }
 }
+
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+.rounded-inherit {
+    border-radius: inherit;
+}
