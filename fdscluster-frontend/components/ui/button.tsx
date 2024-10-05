@@ -38,15 +38,6 @@ const buttonVariants = cva(
 	}
 );
 
-type ButtonVariant =
-	| "default_raised"
-	| "secondary_raised"
-	| "ghost_raised"
-	| "default_outline"
-	| "secondary_outline"
-	| "ghost_outline";
-type ButtonSize = "default" | "sm" | "lg" | "icon";
-
 interface ButtonProps
 	extends React.ButtonHTMLAttributes<HTMLButtonElement>,
 		VariantProps<typeof buttonVariants> {
