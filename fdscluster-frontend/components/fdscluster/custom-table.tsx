@@ -20,7 +20,7 @@ export function CustomTable<T>({ data, columns, className }: TableProps<T>) {
 							<th
 								key={index}
 								className={cn(
-									"bg-[#E1F5FE] text-left p-2 font-openSans font-semibold text-sm text-black text-opacity-70 border-b-2 border-[#9E9E9E] dark:bg-dark-one dark:bg-opacity-90 dark:text-white dark:text-opacity-50",
+									"bg-primary/50 text-left p-2 font-openSans font-semibold text-sm text-black text-opacity-70 border-b-2 border-[#9E9E9E] dark:bg-dark-one dark:bg-opacity-90 dark:text-white dark:text-opacity-50",
 									index === 0 && "rounded-tl-lg",
 									index === columns.length - 1 && "rounded-tr-lg"
 								)}
@@ -37,7 +37,7 @@ export function CustomTable<T>({ data, columns, className }: TableProps<T>) {
 							className={
 								rowIndex % 2 === 0
 									? "bg-white dark:bg-dark-two"
-									: "bg-[#E0F7FA] bg-opacity-50 dark:bg-dark-one dark:bg-opacity-40"
+									: "bg-primary bg-opacity-20 dark:bg-dark-one dark:bg-opacity-40"
 							}
 						>
 							{columns.map((column, colIndex) => (

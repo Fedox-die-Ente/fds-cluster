@@ -1,15 +1,39 @@
 "use client";
 
-import { BarChart3, Bell, ChevronRight, Cloud, File, FileText, LayoutGrid } from "lucide-react";
+import { BarChart3, Bell, CloudIcon, File, FileText, LayoutGrid, MenuIcon } from "lucide-react";
+import React from "react";
 
-export default function DashboardLayout() {
+export default function DashboardLayout({
+	children
+}: Readonly<{
+	children: React.ReactNode;
+}>) {
 	return (
 		<div className="flex h-screen bg-light-two dark:bg-dark-two">
+			<div className="absolute inset-0 z-0">
+				<div className="bg-blue-500 h-[40vh] relative w-full">
+					<svg
+						className="absolute bottom-0 left-0 w-full h-auto"
+						viewBox="0 0 1440 320"
+						preserveAspectRatio="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							className="fill-light-two dark:fill-dark-two"
+							fillOpacity="1"
+							d="M0,128L48,138.7C96,149,192,171,288,165.3C384,160,480,128,576,128C672,128,768,160,864,181.3C960,203,1056,213,1152,197.3C1248,181,1344,139,1392,117.3L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+						></path>
+					</svg>
+				</div>
+			</div>
+
 			{/* Sidebar */}
-			<aside className="w-64 bg-light-one dark:bg-dark-one bg-opacity-90 shadow-md z-10">
-				<div className="p-4 flex items-center space-x-2">
-					<div className="w-8 h-8 bg-blue-500 rounded-full"></div>
-					<span className="font-semibold text-gray-700">Dandelion Pro</span>
+			<aside className="w-64 bg-light-one dark:bg-dark-one shadow-md z-20 relative">
+				<div className="p-4 flex flex-col items-center space-x-2">
+					<CloudIcon className="h-12 w-12 text-blue-600 dark:text-blue-400" />
+					<h1 className="text-xl font-bold text-gray-700 dark:text-white">
+						FedustriaCluster
+					</h1>
 				</div>
 				<nav className="mt-8">
 					<SidebarItem icon={<LayoutGrid size={20} />} title="Dashboard" />
@@ -24,17 +48,20 @@ export default function DashboardLayout() {
 			{/* Main content */}
 			<div className="flex-1 flex flex-col overflow-hidden">
 				{/* Top navigation */}
-				<header className="flex items-center justify-between p-4 bg-blue-500 z-10">
+				<header className="flex items-center justify-between p-4 bg-blue-500 z-30">
 					<div className="flex items-center space-x-2 text-gray-600">
-						<span>App</span>
-						<ChevronRight size={16} />
-						<span>Layout</span>
-						<ChevronRight size={16} />
-						<span className="text-blue-500">Grid Layout</span>
+						<div
+							className={
+								"absolute w-12 h-12 rounded-full bg-[#EDF7FD] dark:bg-primary flex items-center justify-center -ml-10 mt-4"
+							}
+						>
+							<MenuIcon className={"text-primary dark:text-white"} />
+						</div>
 					</div>
 					<div className="flex items-center space-x-4">
-						<button className="text-gray-600 focus:outline-none">
+						<button className="text-white focus:outline-none">
 							<Bell size={24} />
+							<div className="absolute -mt-3 ml-3 w-3 h-3 bg-red-500 rounded-full"></div>
 						</button>
 						<div className="relative">
 							<button className="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out">
@@ -48,45 +75,7 @@ export default function DashboardLayout() {
 					</div>
 				</header>
 
-				<main className="flex-1 overflow-x-hidden overflow-y-auto relative">
-					<div className="bg-blue-500 h-96 relative">
-						<h1 className="text-3xl font-bold text-white absolute top-8 left-8">
-							Grid Layout
-						</h1>
-						<svg
-							className="absolute bottom-0 left-0 w-full h-auto"
-							viewBox="0 0 1440 320"
-							preserveAspectRatio="none"
-							xmlns="http://www.w3.org/2000/svg"
-						>
-							<path
-								className="fill-light-two dark:fill-dark-two"
-								fillOpacity="1"
-								d="M0,160L48,170.7C96,181,192,203,288,197.3C384,192,480,160,576,160C672,160,768,192,864,213.3C960,235,1056,245,1152,229.3C1248,213,1344,171,1392,149.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-							></path>
-						</svg>
-					</div>
-					<div className="container mx-auto px-8 -mt-60 relative z-10">
-						<div className="bg-light-one dark:bg-dark-one rounded-lg shadow-xl p-6">
-							<div className="flex items-center">
-								<div className="p-3 rounded-full bg-blue-100 dark:bg-primary/30">
-									<Cloud className="h-8 w-8 text-blue-600 dark:text-blue-400" />
-								</div>
-								<div className="ml-4">
-									<h4 className="text-xl font-semibold text-gray-700">
-										Lorem Ipsum Dolor
-									</h4>
-									<p className="mt-2 text-gray-600">
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-										Vivamus ante ipsum, suscipit sit amet bibendum eget,
-										faucibus eget urna. Fusce ac elit tristique nisl vulputate
-										pellentesque ut vitae lectus.
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</main>
+				{children}
 			</div>
 		</div>
 	);
@@ -97,7 +86,7 @@ function SidebarItem({ icon, title, active = false }) {
 	return (
 		<a
 			href="#"
-			className={`flex items-center space-x-2 px-6 py-3 hover:bg-gray-100 ${active ? "bg-blue-100 text-blue-600" : "text-gray-600"}`}
+			className={`flex items-center transition-all space-x-2 px-6 py-3 hover:bg-gray-100 dark:hover:bg-dark-two ${active ? "bg-blue-100 text-blue-600 dark:bg-dark-two dark:text-primary" : "text-gray-600"}`}
 		>
 			{icon}
 			<span>{title}</span>
