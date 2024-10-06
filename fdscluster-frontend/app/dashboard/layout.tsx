@@ -1,7 +1,8 @@
 "use client";
 
-import { BarChart3, Bell, CloudIcon, File, FileText, LayoutGrid, MenuIcon } from "lucide-react";
+import { Bell, MenuIcon } from "lucide-react";
 import React from "react";
+import Sidebar from "@/components/fdscluster/sidebar";
 
 export default function DashboardLayout({
 	children
@@ -28,22 +29,7 @@ export default function DashboardLayout({
 			</div>
 
 			{/* Sidebar */}
-			<aside className="w-64 bg-light-one dark:bg-dark-one shadow-md z-20 relative">
-				<div className="p-4 flex flex-col items-center space-x-2">
-					<CloudIcon className="h-12 w-12 text-blue-600 dark:text-blue-400" />
-					<h1 className="text-xl font-bold text-gray-700 dark:text-white">
-						FedustriaCluster
-					</h1>
-				</div>
-				<nav className="mt-8">
-					<SidebarItem icon={<LayoutGrid size={20} />} title="Dashboard" />
-					<SidebarItem icon={<FileText size={20} />} title="Layout" active />
-					<SidebarItem icon={<FileText size={20} />} title="Form Button" />
-					<SidebarItem icon={<FileText size={20} />} title="UI Elements" />
-					<SidebarItem icon={<BarChart3 size={20} />} title="Charts" />
-					<SidebarItem icon={<File size={20} />} title="Pages" />
-				</nav>
-			</aside>
+			<Sidebar />
 
 			{/* Main content */}
 			<div className="flex-1 flex flex-col overflow-hidden">
@@ -78,18 +64,5 @@ export default function DashboardLayout({
 				{children}
 			</div>
 		</div>
-	);
-}
-
-// @ts-ignore
-function SidebarItem({ icon, title, active = false }) {
-	return (
-		<a
-			href="#"
-			className={`flex items-center transition-all space-x-2 px-6 py-3 hover:bg-gray-100 dark:hover:bg-dark-two ${active ? "bg-blue-100 text-blue-600 dark:bg-dark-two dark:text-primary" : "text-gray-600"}`}
-		>
-			{icon}
-			<span>{title}</span>
-		</a>
 	);
 }

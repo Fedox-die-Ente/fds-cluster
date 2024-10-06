@@ -42,7 +42,6 @@ export default function Page() {
 			username: "john_doe123"
 		}
 	];
-
 	return (
 		<div className={""}>
 			<DashboardHeader siteTitle={"Site Title"} title={"Title"} description={"Description"}>
